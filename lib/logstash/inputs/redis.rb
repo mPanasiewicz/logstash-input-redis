@@ -206,7 +206,6 @@ EOF
         until stop?
           begin
             @redis ||= connect
-            @logger.info("############# Redis: #{@redis.inspect} ##############")
             @list_method.call(@redis, output_queue)
           rescue ::Redis::BaseError => error
             @logger.warn('Redis connection problem', exception: error)
